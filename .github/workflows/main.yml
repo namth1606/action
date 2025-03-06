@@ -18,3 +18,16 @@ jobs:
         with:
           name: oidc-token
           path: oidc_token.txt
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          workload_identity_provider: "projects/780618082768/locations/global/workloadIdentityPools/github-pool/providers/github-provider"
+          service_account: "github-sa@fphouse-452913.iam.gserviceaccount.com"
+      - name: Setup gcloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          version: 'latest'
+      - name: Upload file to Google Cloud Storage
+        run: |
+          echo "Hello World!" > test.txt  # Tạo file mẫu
+          gcloud storage cp test.txt gs://fphouse/
