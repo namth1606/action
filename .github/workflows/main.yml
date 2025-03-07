@@ -20,7 +20,6 @@ jobs:
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v1
         with:
-          workload_identity_provider: "projects/780618082768/locations/global/workloadIdentityPools/github/providers/github"
           service_account: "github-sa@fphouse-452913.iam.gserviceaccount.com"
       - name: Setup gcloud SDK
         uses: google-github-actions/setup-gcloud@v1
